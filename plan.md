@@ -2,6 +2,7 @@
 
 ## introduction
 
+### LISEZ LES MESSAGES D'ERREUR GIT TOUT EST ECRIT (c'est pas parce que c'est rouge que ton pc va exploser si tu lis)
 ### pourquoi git ? historique rapide. (jweber)
 ### config son git (kporceil)
 
@@ -11,7 +12,7 @@
 
 ## commande/utilisation poussée (branching)
 
-### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier (kporceil)
+### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream (kporceil)
 
 ON MONTRE LEARN GIT BRANCHING
 
