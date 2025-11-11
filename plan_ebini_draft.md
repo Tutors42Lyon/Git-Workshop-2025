@@ -48,12 +48,12 @@ Cette commande agit récursivement ce qui permet d'ajouter tous les fichiers et 
 Example :
 
 ```sh
-git add . # Ajoute le dossier actuel et tous ses fichiers/dossier récursivement
+git add . # Ajoute le dossier actuel et tous ses fichiers/sous-dossiers récursivement
 
-git add file1 file2 dir1/file3 # Ajouter les fichiers sélectionner
+git add file1 file2 dir1/file3 # Ajoute les fichiers sélectionner
 ```
 
 > [!NOTE]  
 > #### ``.gitignore``
-> Le ``.gitignore`` permet de spécifier des fichiers/dossier à ne pas ajouter automatiquement à l'index avec git add.  
+> Le ``.gitignore`` permet de spécifier des fichiers/dossiers à ne pas ajouter automatiquement à l'index avec [`git add`](#git-add).  
 > Il peut y en avoir plusieurs dans différents dossiers d'un repo et ils agiront tous sur leur dossier et tous ses sous-dossiers.
