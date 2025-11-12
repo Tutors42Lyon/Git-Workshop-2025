@@ -1,65 +1,149 @@
 
 # atelier git
 
-## Glossaire 
+- [`Introduction`](#Introduction)
+    - [`Glossaire`](#Glossaire)
+    - [`git en bref résumé`](#git-en-bref-r%C3%A9sum%C3%A9-)
+    - [`Historique (d'où vient git)`](#historique-do%C3%B9-vient-git-)
+        - [`1ere generation de VCS`](#1ere-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+        - [`2eme generation de VCS`](#2eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+        - [`3eme generation de VCS`](#3eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+    - [`Alternatives`](#Alternatives-)
+    
 
-different termes pour dire for "version control system":
+## `Introduction`
+
+### Glossaire 
+
+Différents termes pour dire for "version control system":
 - VCS : Version Control Software / Version Control System
 - SCM : Source Control Management / Software Configuration Management
 - Revision Control
 
-d'autres termes:
+
+Abréviations de VCS:
 - SCCS : Source Code Control System
 - RCS : Revision Control System
 - CVS : Concurrent Version System
 - SVN : Apache Subversion
 
-## introduction pourquoi git ? historique rapide. (jweber)
+### git en bref résumé : 
 
-### qu'est ce que git en résumé : 
+**git** : un logiciel de control de version décentralisé.
 
-- un logiciel de control de version
+Créer en 2005 par Linus Torvalds pour pouvoir gérer les versions du noyau linux.
 
-A la base, l'objectif d'un système de control de version :
-    - economiser de la place.
-    - pouvoir gérer les versions.
-    - avoir une trace de qui à changer quoi et quand.
-    - savoir quel version du logiciel le client a sur son pc.
+#### un logiciel de control de version :
 
-- c'est un logiciel libre et open-source (free and open-source software (FOSS), au contraire de propriétaire) de control/gestion de version decentralisé (distributed version control software)
-    - décentralisé : le répertoire entier, incluant le code source et l'historique, est copié localement sur l'ordinateur de chaque developper travaillant sur le projet.
-    NOTE : il existe quand même un serveur général où tout le monde va partager ses modifications et récupérer les modifications des autres (ex: Mercurial, GitLab, SourceForge, Bitbucket, Github)
-    - centralisé : pas de copie sur l'ordinateur local, il faut se connecter à un serveur pour pouvoir travailler sur le projet.
-- Donc pas de version centrale du code source, chaque developpeur à sa copie local du répertoire avec ses potentiels changements.
-- souvent utilisé pour gérer le code source d'un programme.
+- Pouvoir gérer différentes versions d'un logiciel.
+- Optimisation de la mémoire (avec un système qui enregistre les différences d'un fichiers entre deux patches plutôt que le fichier entier à chaque état du projet)
+- Savoir qui à changer quoi et quand.
+- Savoir quel version du logiciel le client a sur son pc.
 
+<small> <small> Pratique pour avoir un historique de l'évolution d'un code source, sans avoir à créer des dossiers libft_V1, libft_V2, libft_Vfinale, libft_Vfinale_2, libft_Vfinal_final.
+
+Permet de travailler facilement en groupe, ou chacun à accès au code et peu le modifier de son côté. 
+</small></small>  
+
+#### Centralisé (centralized) versus Décentralisé (distributed) :
+
+    
+**centralisé** : 
+
+Pas de copie sur l'ordinateur local, il faut se connecter à un serveur pour pouvoir travailler sur un projet.
+
+**Décentralisé** :
+
+Le répertoire entier, incluant le code source et l'historique, est copié localement sur l'ordinateur de chaque developper travaillant sur le projet.
+
+Donc pas de version centrale du code source, chaque developpeur à sa copie local du répertoire avec ses potentiels changements.
+
+
+NOTE : il existe quand même un serveur général où tout le monde va partager ses modifications et récupérer les modifications des autres (ex: Mercurial, GitLab, SourceForge, Bitbucket, Github, ...)
+
+souvent utilisé pour gérer le code source d'un programme.
+
+**avantages / inconvénients** :
 
 Exemple d'avantages d'un système décentralisé :
-    - possibilité de travailler hors-ligne
-    - les copies local du répertoires sont aussi des backups : il n'y a pas un seul endroit ou se situe le code source.
+- possibilité de travailler hors-ligne
+- les copies local du répertoires sont aussi des backups : il n'y a pas un seul endroit ou se situe le code source.
 
 Exemples de désavantages d'un système décentralisé :
-    - Peu prendre beaucoup de place, vu que chaque personne fait une copie entière du répertoire. (-> à vérifier, mais : un studio de jeu AAA n'utilisera jamais git car pas adapté pour gérer tous les assets, mais plus quelque chose comme Perforce)
-    - Un code plus facilement exposé, vu qu'il est présent sur plein de machine.
+- Peu prendre beaucoup de place, vu que chaque personne fait une copie entière du répertoire. (-> à vérifier, mais : un studio de jeu AAA n'utilisera jamais git car pas adapté pour gérer tous les assets, mais plus quelque chose comme Perforce)
+- Un code plus facilement exposé, vu qu'il est présent sur plein de machine.
 
-#### En gros :
 
-- c'est pas mal pour avoir un historique de ce qui s'est passé dans notre code, sans avoir à créer un dossier libft_V1, libft_V2, libft_Vfinale, libft_Vfinale_2, libft_Vfinal_final,
-- donc ça garde l'historique de modifications. C'est intelligent pour ne garder que les différences entre chaques versions (optimisation de la mémoire)
-- ça permet de travailler facilement en groupe, ou chacun à accès au code et peu le modifier de son côté.
 
-### Un peu d'histoire : 
+### `Historique (d'où vient git)` : 
 
-premier systeme de control de version :
-- SCCS : Source Code Control System
+Les différentes générations de système de control de version:
 
-- Sur les 10 premières année du developpement du noyau linux (1990 à 1998), le système de control de version c'etait : Linux lui même.
-- Critique de Linus sur les CVS (Concurrent Version Systems)
-- Puis vers 1998 : BitKeeper est venu avec son idée d'une 'distributed source management system'.
-- Vers 2002 : Changement de BitKeeper vers un outils interne.
-- A la base, créé par Linus Torvald pour le version control du developpement du noyau linux. Le développement de git à commencé en 2005.
-- Au début, le développement du noyau linux reposait sur BitKeeper pour son gestionnaire de version. Mais c'était un logiciel propriétaire, donc Linux à décidé de créer le sien, pour avoir un systeme de versionning libre.
-- 
+|Generation|Networking|Operations|Concurrency|Examples|
+|----------|----------|----------|-----------|--------|
+|1ère|Aucun|Un fichier à la fois|Locks|SCCS, RCS|
+|2ème|Centralisé|Plusieurs fichiers|Merge avant de commit|CVS, SourceSafe, Subversion|
+|3ème|Décentralisé|Changeset|Commit avant de Merge|Bazaar, git, Mercurial, BitKeeper|
+
+source : https://ericsink.com/vcbe/html/history_of_version_control.html
+
+#### 1ere génération de système de control de version
+
+- en 1972 SCCS (Source Code Control System) : le premier système de controle de version, il apporte les notions de :
+    - système de lock pour pouvoir modifier un fichier
+    - enregistrement de changements incremental
+    - gérer plusieurs versions
+
+- en 1982 RCS (Revison Control System), un SCCS amélioré:
+    - des branches 
+    - possibilité de unlock un fichier
+
+#### 2eme génération de système de control de version
+
+- en 1985 CVS (concurrent version system) : à la base un script qui sert de front-end à RCS
+    - architecture client-server : le serveur contient le repo, et le client parle à ce serveur pour avoir accès au code, modifier le code, et pleins d'autres opérations.
+
+- en 2001 SVN (Apache subversion) : une refonte de CVS pour palier à ses défaults et ajouts de fonctionnalités manquantes à CVS
+
+#### 3eme génération de système de control de version
+
+##### en 1998:
+
+le projet Linux commence à être vraiment gros, et jusque là, le système de control de version, c'est juste Linus Torvald. Qui par la même occasion déteste CVS et prefére ne rien utiliser que d'utiliser CVS. 
+
+##### Toujours en 1998:
+
+un mec (Larry McVoy) propose son idée d'outil de controle de version décentralisé à Linus qui lui réponds que c'est cool, qu'il aime l'idée.
+
+##### en 2000 :
+
+Ce même mec (Larry McVoy) sort alors BitKeeper en 2000, historiquement le premier des système de controle de version **décentralisé**.
+
+##### en 2002 :
+
+BitKeeper est adopté pour le gestion de contrôle du noyau linux. Mais c'est un logiciel propriétaire certains termes de la license sont très restrictif :
+- Interdit de reverse-engineer quoi que ce soit lié à BitKeeper.
+- Interdiction de participer au développement d'un outil concurrent à BitKeeper.
+
+L'adoption de BitKeeper fait beaucoup débat dans la communauté linux.
+
+##### en 2005 :
+
+ça fini par exploser et Larry McVoy retire la license pour utiliser BitKeeper pour gérer le noyau linux pour différentes raisons (non respect de la license entre autres.
+    
+Il faut rapidement une alternative a BitKeeper pour permettre la suite du développement du noyau, les alternatives existantes à l'époque sont essentiellement:
+- monotone
+- DARCS
+
+Mais les alternatives sont trop inéfficientes.
+
+En avril 2005 : Linus décide d'écrire son propre logiciel de gestion de version et il sort git. 
+
+Le 16 juin 2005, la version 2.6.12 du noyau est gérer avec git.
+
+Note : c'est apparement pas du tout le linux qu'on connais aujourd'hui et c'était vraiment dur à prendre en main et c'était développer vraiment pour les besoins de Linus et l'intégration du développement du noyau.
+
+- en 2007 : après pas mal de modification, git est prêt à être utilisé pour gérer d'autre logiciel que le noyau linux.
 
 ### Alternatives :
 
@@ -67,15 +151,33 @@ premier systeme de control de version :
 
 #### Alternative a git :
 
-le plus populaire :
+le plus populaire et je dirais le seul viable et maintenu à ce jour ? :
 - Mercurial 
 
-d'autres moins populaire (je ne sais pas si c'est encore utilisé aujourd'hui, renseignez vous si ça vous chante):
-- GNU arch
-- Monotone
-- Darcs
-- Pijul
-- Apache Subversion
+sinon d'après 'git survey' en 2007, voici ce que les gens utilisaient pour gérer le versionning de leur projet (pour 654 répondants (plusieurs réponses possibles)) pour donner une idée :
+
+|Réponses|nombre|Réponses|nombres|Réponses|nombres|
+|--------|------|--------|-------|--------|-------|
+AccuRev |	3| Mercurial |	92|Subversion |	524|
+Aegis |	1|Monotone |31|Sun NSE 	|2|
+Bazaar |	19|Omniworks |	1|Sun TeamWare |	4|
+Bazaar-NG 	|50|OpenCM |	1|VCS 	|1|
+BitKeeper |	27|PRCS |	1|VMS 	|1|
+CCC |	1|PVCS 	|12|VSS 	|26|
+CMS (Digital) |	1|Perforce 	|50|'cp -a' 	|1|
+CMS (VAX) |	1|Quilt |	2|akpm patch scripts| 	1|
+CMS (VMS) |	1|RCS 	|61|custom in-house tools 	|1|
+CVCS | 	1|SCCS |	18|diff patch |	2|
+CVS |	454|SCM 	|1|notes-on-paper-made-by-hand |	1|
+ClearCase |	43|SCSS |	1|really horrible stuff |	1|
+CodeMgr |1|SVK |	19|scripts for 'shadow trees' |	1|
+Continuus 	|1|Sourcerer's Apprentice 	|1|tarballs 	|1|
+Darcs 	|78|SourceForge |	1|tlib 	|1|none 	|9|
+DesignSync |	1|Serena Version Manager |	1|undisclosed 	|1 |
+GNU Arch 	|57|StarTeam 	|4|
+
+source :  https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html#10._What_other_SCMs_did.2Fdo_you_use.3F
+
 
 #### Alternative à GitHub :
 
@@ -84,35 +186,29 @@ d'autres moins populaire (je ne sais pas si c'est encore utilisé aujourd'hui, r
 - GitLab
 - Gitea
 
-### LISEZ LES MESSAGES D'ERREUR GIT TOUT EST ECRIT (c'est pas parce que c'est rouge que ton pc va exploser si tu lis)
+### NOTES:
 
-### config son git (kporceil)
+- De grosses entreprise comme Facebook et Google n'utilise pas / plus git. Car trop peu efficient pour gérer les énormes historiques de projet.
 
-## commande/utilisation basique
+- Les studios de jeu AAA vont préférer un système centralisé, car trop long / pas pratique de télécharger tous le répo qui peut peser plusieurs Tera octets de données.
 
-### add, status, commit, push, pull, remote, diff, log (jweber)
+ci-dessous un graphique de l'évolution de l'adoption de git versus svn pour la gestion de version d'après un songae eclispe :
 
-## commande/utilisation poussée (branching)
+![grpahique de l'évolution de l'adoption de git versus svn](images/git_vs_svn.png)
 
-### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream (kporceil)
 
-ON MONTRE LEARN GIT BRANCHING
+source : https://softwareengineering.stackexchange.com/a/150791
 
-### a voir submodule et autres (jweber)
 
-### Fonctionnement interne de git sur certains trucs (fonctionnement parent enfant des commits, HEAD, indexing, ...) (a voir)
-
-# sources :
+### sources :
 
 - https://en.wikipedia.org/wiki/Git
 - https://en.wikipedia.org/wiki/Version_control
-- https://en.wikipedia.org/wiki/Linux_kernel
 - https://en.wikipedia.org/wiki/Distributed_version_control
-- https://en.wikipedia.org/wiki/Perforce
-- https://www.reddit.com/r/devops/comments/xwnpze/better_git_alternative/
-- https://www.reddit.com/r/git/comments/q5qow9/best_github_opensource_alternative/
-- https://www.reddit.com/r/opensource/comments/1gx5wri/suggestions_on_a_github_alternative/
 - https://graphite.com/blog/bitkeeper-linux-story-of-git-creation
 - https://www.youtube.com/watch?v=W3hr-F8ie94
 - https://ericsink.com/vcbe/html/history_of_version_control.html
-- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html (graphic sur qui utilise quel VCS)
+- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html
+
+### a voir submodule et autres (jweber)
+
