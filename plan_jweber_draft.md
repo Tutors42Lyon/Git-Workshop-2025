@@ -7,6 +7,7 @@ different termes pour dire for "version control system":
 - VCS : Version Control Software / Version Control System
 - SCM : Source Control Management / Software Configuration Management
 - Revision Control
+- CVS : Concurrent Version system
 
 - SCCS : Source Code Control System
 
