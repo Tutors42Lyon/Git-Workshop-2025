@@ -4,10 +4,10 @@
 - [`Introduction`](#Introduction)
     - [`Glossaire`](#Glossaire)
     - [`git en bref résumé`](#git)
-    - [`Historique`](#Historique)
-        - [`1ere generation de VCS`](#1ere)
-        - [`2eme generation de VCS`](#2eme)
-        - [`3eme generation de VCS`](#3eme)
+    - [`Historique (d'où vient git)`](#Historique%20(d'où%20vient%20git))
+        - [`1ere generation de VCS`](#1ere%20generation%20de%20système%20de%20control%20de%20version)
+        - [`2eme generation de VCS`](#2eme%20generation%20de%20système%20de%20control%20de%20version)
+        - [`3eme generation de VCS`](#3eme%20generation%20de%20système%20de%20control%20de%20version)
     - [`Alternatives`](#Alternatives)
     
 
@@ -75,7 +75,7 @@ Exemples de désavantages d'un système décentralisé :
 
 
 
-### `Historique` (d'où vient git) : 
+### `Historique (d'où vient git)` : 
 
 Les différentes générations de système de control de version:
 
@@ -87,7 +87,7 @@ Les différentes générations de système de control de version:
 
 source : https://ericsink.com/vcbe/html/history_of_version_control.html
 
-#### 1ere generation de système de control de version : 
+#### 1ere generation de système de control de version
 
 - en 1972 SCCS (Source Code Control System) : le premier système de controle de version, il apporte les notions de :
     - système de lock pour pouvoir modifier un fichier
@@ -98,14 +98,14 @@ source : https://ericsink.com/vcbe/html/history_of_version_control.html
     - des branches 
     - possibilité de unlock un fichier
 
-#### 2eme génération de système de control de version :
+#### 2eme génération de système de control de version
 
 - en 1985 CVS (concurrent version system) : à la base un script qui sert de front-end à RCS
     - architecture client-server : le serveur contient le repo, et le client parle à ce serveur pour avoir accès au code, modifier le code, et pleins d'autres opérations.
 
 - en 2001 SVN (Apache subversion) : une refonte de CVS pour palier à ses défaults et ajouts de fonctionnalités manquantes à CVS
 
-#### 3eme generation de systeme de control de version : 
+#### 3eme generation de systeme de control de version
 
 ##### en 1998:
 
@@ -208,6 +208,7 @@ source : https://softwareengineering.stackexchange.com/a/150791
 - https://graphite.com/blog/bitkeeper-linux-story-of-git-creation
 - https://www.youtube.com/watch?v=W3hr-F8ie94
 - https://ericsink.com/vcbe/html/history_of_version_control.html
-- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html (graphic sur qui utilise quel VCS)
+- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html
 
 ### a voir submodule et autres (jweber)
+
