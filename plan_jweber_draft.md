@@ -5,9 +5,9 @@
     - [`Glossaire`](#Glossaire)
     - [`git en bref résumé`](#git-en-bref-résumé)
     - [`Historique (d'où vient git)`](#Historique-(d'où-vient-git))
-        - [`1ere generation de VCS`](#1ere-generation-de-systeme-de-control-de-version)
-        - [`2eme generation de VCS`](#2eme-generation-de-systeme-de-control-de-version)
-        - [`3eme generation de VCS`](#3eme-generation-de-systeme-de-control-de-version)
+        - [`1ere generation de VCS`](#1eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+        - [`2eme generation de VCS`](#2eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+        - [`3eme generation de VCS`](#3eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
     - [`Alternatives`](#Alternatives-)
     
 
@@ -87,7 +87,7 @@ Les différentes générations de système de control de version:
 
 source : https://ericsink.com/vcbe/html/history_of_version_control.html
 
-#### 1ere generation de système de control de version
+#### 1ere génération de système de control de version
 
 - en 1972 SCCS (Source Code Control System) : le premier système de controle de version, il apporte les notions de :
     - système de lock pour pouvoir modifier un fichier
@@ -105,7 +105,7 @@ source : https://ericsink.com/vcbe/html/history_of_version_control.html
 
 - en 2001 SVN (Apache subversion) : une refonte de CVS pour palier à ses défaults et ajouts de fonctionnalités manquantes à CVS
 
-#### 3eme generation de systeme de control de version
+#### 3eme génération de système de control de version
 
 ##### en 1998:
 
