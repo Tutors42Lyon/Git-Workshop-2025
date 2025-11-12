@@ -42,18 +42,50 @@ Il existe beaucoup de services de gestion de dépôt distant, bien le plus connn
 
 ## `git add`
 
-`git add` permet d'ajouter les fichiers et dossiers spécifiés à l'index.  
+`git add` permet d'ajouter les **modification** apportées aux fichiers et dossiers spécifiés à l'index.  
+Des **modifications** sont tout ce qui change le projet que ce soit créer, écrire ou supprimer un fichier.  
 Cette commande agit récursivement ce qui permet d'ajouter tous les fichiers et dossier présent dans un dossier sécifié.
 
 Example :
 
-```sh
-git add . # Ajoute le dossier actuel et tous ses fichiers/sous-dossiers récursivement
+```bash
+# Ajoute le dossier actuel et tous ses fichiers/sous-dossiers récursivement
+git add .
 
-git add file1 file2 dir1/file3 # Ajoute les fichiers sélectionner
+# Ajoute les fichiers sélectionner
+git add file1 file2 dir1/file3
 ```
 
-> [!NOTE]  
-> #### ``.gitignore``
-> Le ``.gitignore`` permet de spécifier des fichiers/dossiers à ne pas ajouter automatiquement à l'index avec [`git add`](#git-add).  
+#### Suppression de fichiers
+
+Une suppression est une **modifications** de l'index, pour que git _comprenne_ que le fichier est supprimé il faut [`git add`](#git-add) manuellement le nom du fichier supprimé ou l'un de ses dossiers parent.
+
+Example :
+
+```bash
+# Supprime le fichier du working tree
+rm dir1/file3
+
+# Ajoute cette suppression à l'index
+git add dir1/file3
+# OU
+git add dir1
+```
+
+> [!NOTE]
+>
+> #### `.gitignore`
+>
+> Le `.gitignore` permet de spécifier des fichiers/dossiers à ne pas ajouter automatiquement à l'index avec [`git add`](#git-add).  
 > Il peut y en avoir plusieurs dans différents dossiers d'un repo et ils agiront tous sur leur dossier et tous ses sous-dossiers.
+
+## `git status`
+
+La commande `git status` est une manière simple et efficace d'avoir des infos sur l'état actuel du repo. Vous pouvez y voir :
+
+- La branche actuelle
+- L'état de la branche locale par rapport à celle sur le repo remote
+- Les modifications apportées au fichiers ajoutées à l'index
+- Les modifications apportées au fichiers du working tree par rapport à l'index.  
+
+C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer ses commits et les pushs/pull fait sur la remote.
