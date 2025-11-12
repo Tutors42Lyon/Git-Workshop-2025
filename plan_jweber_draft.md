@@ -7,7 +7,7 @@ different termes pour dire for "version control system":
 - VCS : Version Control Software / Version Control System
 - SCM : Source Control Management / Software Configuration Management
 - Revision Control
-- CVS : Concurrent Version system
+
 
 d'autres termes:
 - SCCS : Source Code Control System
@@ -19,15 +19,16 @@ d'autres termes:
 
 ### qu'est ce que git en résumé : 
 
-- un logiciel de control de version
+- un logiciel de control de version distribué
 
 A la base, l'objectif d'un système de control de version :
-    - economiser de la place.
+    - economiser de la place (avec un système qui enregistre les différences plutôt que tout le fichier)
     - pouvoir gérer les versions.
     - avoir une trace de qui à changer quoi et quand.
     - savoir quel version du logiciel le client a sur son pc.
 
-- c'est un logiciel libre et open-source (free and open-source software (FOSS), au contraire de propriétaire) de control/gestion de version decentralisé (distributed version control software)
+#### centralisé (centralized) / decentralisé (distributed)
+
     - décentralisé : le répertoire entier, incluant le code source et l'historique, est copié localement sur l'ordinateur de chaque developper travaillant sur le projet.
     NOTE : il existe quand même un serveur général où tout le monde va partager ses modifications et récupérer les modifications des autres (ex: Mercurial, GitLab, SourceForge, Bitbucket, Github)
     - centralisé : pas de copie sur l'ordinateur local, il faut se connecter à un serveur pour pouvoir travailler sur le projet.
@@ -51,8 +52,27 @@ Exemples de désavantages d'un système décentralisé :
 
 ### Un peu d'histoire : 
 
-premier systeme de control de version :
-- SCCS : Source Code Control System
+1ere generation de système de control de version : (ne peuvent gérer qu'un seul fichier à la fois) 
+    - pas de réseau
+    - un seul fichier 
+
+- en 1972 SCCS (Source Code Control System) : le premier système de controle de version, il apporte les notions de :
+    - enregistrement de changements incremental
+    - gérer plusieurs versions
+
+- en 1982 RCS (Revison Control System) : un SCCS avec des branches grossomodo
+
+2eme génération de système de control de version : 
+    - centralisé
+    - multi-file
+
+- en 1985 CVS (concurrent version system) : à la base un script qui sert de front-end à RCS
+
+- en 2001 SVN (Apache subversion) : une refonte de CVS pour palier à ses défaults
+
+3eme generation de systeme de control de version (naissance de git): 
+
+- en 2000 
 
 - Sur les 10 premières année du developpement du noyau linux (1990 à 1998), le système de control de version c'etait : Linux lui même.
 - Critique de Linus sur les CVS (Concurrent Version Systems)
