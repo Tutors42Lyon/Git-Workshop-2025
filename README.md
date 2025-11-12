@@ -1,4 +1,3 @@
-
 # atelier git
 
 - [`Introduction`](#Introduction)
@@ -220,8 +219,6 @@ source : https://softwareengineering.stackexchange.com/a/150791
 - https://ericsink.com/vcbe/html/history_of_version_control.html
 - https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html
 
-### a voir submodule et autres (jweber)
-
 
 ### config son git 
 
@@ -233,27 +230,27 @@ Git fonctionne avec une configuration pour etablir des logs precis et des strate
 `git config --global core.editor` permet de choisir quel editeur ouvrir quand il y a un besoin de message (ex: git commit)
 
 
-# Utilisations basique et commandes principales :
+## Utilisations basique et commandes principales :
 
-## Vue d'ensembe d'un repo
+### Vue d'ensembe d'un repo
 
 Un repo est globalement divisé en 4 parties :
 
-### 1. **Copie de travail** (**working tree**)
+#### 1. **Copie de travail** (**working tree**)
 
 C'est le contenu présent sur le disque, ce que tu peux éditer en créant, supprimant ou modifiant un fichier.
 
-### 2. **Index** (**staging area**)
+#### 2. **Index** (**staging area**)
 
 La zone intermédiaire avant le commit. Elle permet de sélectionner ce que tu veux mettre dans un commit avec [`git add`](#git-add) avant de le commit
 
-### 3. **Dépôt local** (**local repository**)
+#### 3. **Dépôt local** (**local repository**)
 
 Tout ce qui a été ajouté "définitivement" au repo git est présent ici.  
 On retrouve dans le dossier `.git` à la racine du repo, tous les commits, toutes les branches, les tags, etc.  
 Les modifications y sont ajoutées avec la commande [`git commit`](#git-commit) depuis l'index.
 
-### 4. **Dépôt distant** (**remote repository**)
+#### 4. **Dépôt distant** (**remote repository**)
 
 C'est la copie externe du repo présent localement sur ta machine.  
 Désigné par la `remote` (voir [`git remote`](#git-remote)) le dépôt distant permet de centraliser toutes les modifications depuis le début du projet. Ca permet simplement d'avoir un seul endroit commun où partager ses modifications.  
@@ -263,7 +260,7 @@ Il existe beaucoup de services de gestion de dépôt distant, bien le plus connn
 
 > ###### sources : [Introduction à GIT](https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/#vue-d-ensemble)
 
-## `git add`
+### `git add`
 
 `git add` permet d'ajouter les fichiers et dossiers spécifiés à l'index.  
 Cette commande agit récursivement ce qui permet d'ajouter tous les fichiers et dossier présent dans un dossier sécifié.
@@ -281,10 +278,21 @@ git add file1 file2 dir1/file3 # Ajoute les fichiers sélectionner
 > Le ``.gitignore`` permet de spécifier des fichiers/dossiers à ne pas ajouter automatiquement à l'index avec [`git add`](#git-add).  
 > Il peut y en avoir plusieurs dans différents dossiers d'un repo et ils agiront tous sur leur dossier et tous ses sous-dossiers.
 
+### `git status`
+
+La commande `git status` est une manière simple et efficace d'avoir des infos sur l'état actuel du repo. Vous pouvez y voir :
+
+- La branche actuelle
+- L'état de la branche locale par rapport à celle sur le repo remote
+- Les modifications apportées au fichiers ajoutées à l'index
+- Les modifications apportées au fichiers du working tree par rapport à l'index.  
+
+C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer ses commits et les pushs/pull fait sur la remote.
+
 
 ## commande/utilisation poussée (branching)
 
-### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream (kporceil)
+### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream 
 
 
 #### C’est quoi une branche ?
@@ -494,8 +502,5 @@ git reset --hard <id>
 
 ---
 
-ON MONTRE LEARN GIT BRANCHING
 
-### a voir submodule et autres (jweber)
-
-### Fonctionnement interne de git sur certains trucs (fonctionnement parent enfant des commits, HEAD, indexing, ...) (a voir)
+### autre a voir : submodule, self-host, ... pour une autre fois
