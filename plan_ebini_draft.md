@@ -56,23 +56,21 @@ git add .
 git add file1 file2 dir1/file3
 ```
 
-> [!NOTE]
->
-> #### Suppression de fichiers
->
-> Une suppression est une **modifications** de l'index, pour que git *comprenne* que le fichier est supprimer il faut [``git add``](#git-add) manuellement le fichier ou l'un de ses dossiers parent.
->
-> Example :
->
-> ```sh
-> # Supprime le fichier du working tree
-> rm dir1/file3
->
-> # Ajoute cette suppression à l'index
-> git add dir1/file3
-> # OU
-> git add dir1
-> ```
+#### Suppression de fichiers
+
+Une suppression est une **modifications** de l'index, pour que git *comprenne* que le fichier est supprimé il faut [``git add``](#git-add) manuellement le nom du fichier supprimé ou l'un de ses dossiers parent.
+
+Example :
+
+```sh
+# Supprime le fichier du working tree
+rm dir1/file3
+
+# Ajoute cette suppression à l'index
+git add dir1/file3
+# OU
+git add dir1
+```
 
 > [!NOTE]
 >
