@@ -8,7 +8,7 @@
 
 ## commande/utilisation basique
 
-### add, status, commit, push, pull, remote, diff, log (jweber)
+### add, status, commit, push, pull, remote, diff, log (ebini)
 
 ## commande/utilisation poussée (branching)
 

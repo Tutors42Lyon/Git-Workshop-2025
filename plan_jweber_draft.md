@@ -9,7 +9,11 @@ different termes pour dire for "version control system":
 - Revision Control
 - CVS : Concurrent Version system
 
+d'autres termes:
 - SCCS : Source Code Control System
+- RCS : Revision Control System
+- CVS : Concurrent Version System
+- SVN : Apache Subversion
 
 ## introduction pourquoi git ? historique rapide. (jweber)
 
@@ -111,3 +115,5 @@ ON MONTRE LEARN GIT BRANCHING
 - https://www.reddit.com/r/opensource/comments/1gx5wri/suggestions_on_a_github_alternative/
 - https://graphite.com/blog/bitkeeper-linux-story-of-git-creation
 - https://www.youtube.com/watch?v=W3hr-F8ie94
+- https://ericsink.com/vcbe/html/history_of_version_control.html
+- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html (graphic sur qui utilise quel VCS)
