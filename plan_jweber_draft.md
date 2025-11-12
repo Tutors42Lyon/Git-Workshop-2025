@@ -7,7 +7,7 @@
     - [`Historique (d'où vient git)`](#Historique%20(d'où%20vient%20git))
         - [`1ere generation de VCS`](#1ere%20generation%20de%20système%20de%20control%20de%20version)
         - [`2eme generation de VCS`](#2eme%20generation%20de%20système%20de%20control%20de%20version)
-        - [`3eme generation de VCS`](#3eme%20generation%20de%20système%20de%20control%20de%20version)
+        - [`3eme generation de VCS`](#3eme-generation-de-systeme-de-control-de-version)
     - [`Alternatives`](#Alternatives)
     
 
