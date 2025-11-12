@@ -1,3 +1,4 @@
+
 # atelier git
 
 
@@ -66,7 +67,6 @@ Exemples de désavantages d'un système décentralisé :
 
 
 
-
 ### Historique (d'où vient git) : 
 
 Les différentes générations de système de control de version:
@@ -99,19 +99,29 @@ source : https://ericsink.com/vcbe/html/history_of_version_control.html
 
 #### 3eme generation de systeme de control de version : 
 
-- en 1998, le projet Linux commence à être vraiment gros, et jusque là, le système de control de version, c'est juste Linus Torvald. Qui par la même occasion déteste CVS et prefére ne rien utiliser que d'utiliser CVS. 
+##### en 1998:
 
-- Toujours en 1998, un mec (Larry McVoy) propose son idée d'outil de controle de version décentralisé à Linus. Il lui dit c'est cool j'aime l'idée.
+le projet Linux commence à être vraiment gros, et jusque là, le système de control de version, c'est juste Linus Torvald. Qui par la même occasion déteste CVS et prefére ne rien utiliser que d'utiliser CVS. 
 
-- en 2000 : Ce même mec (Larry McVoy) sort alors BitKeeper en 2000.
+##### Toujours en 1998:
 
-- en 2002 : BitKeeper est adopté pour le gestion de contrôle du noyau linux. Mais c'est un logiciel propriétaire certains termes de la license sont très restrictif :
-    - Interdit de reverse-engineer quoi que ce soit lié à BitKeeper
-    - Interdiction de participer au développement d'un outil concurrent à BitKeeper.
+un mec (Larry McVoy) propose son idée d'outil de controle de version décentralisé à Linus. Il lui dit c'est cool j'aime l'idée.
+
+##### en 2000 :
+
+Ce même mec (Larry McVoy) sort alors BitKeeper en 2000.
+
+##### en 2002 :
+
+BitKeeper est adopté pour le gestion de contrôle du noyau linux. Mais c'est un logiciel propriétaire certains termes de la license sont très restrictif :
+- Interdit de reverse-engineer quoi que ce soit lié à BitKeeper
+- Interdiction de participer au développement d'un outil concurrent à BitKeeper.
 
 L'adoption de BitKeeper fait beaucoup débat dans la communauté linux.
 
-- en 2005 : ça fini par exploser et Larry McVoy retire la license pour utiliser BitKeeper pour gérer le noyau linux pour différentes raisons.
+##### en 2005 :
+
+ça fini par exploser et Larry McVoy retire la license pour utiliser BitKeeper pour gérer le noyau linux pour différentes raisons.
     
 Il faut rapidement une alternative a BitKeeper pour permettre la suite du développement du noyau, les alternatives existantes à l'époque sont essentiellement:
 - monotone
@@ -119,15 +129,14 @@ Il faut rapidement une alternative a BitKeeper pour permettre la suite du dével
 
 Mais les alternatives sont trop inéfficientes.
 
-- en (avril) 2005 : Linus décide d'écrire son propre logiciel de gestion de version et il sort git. Le 16 juin 2005, la version 2.6.12 du noyau est gérer avec git.
+##### en (avril) 2005 :
+
+Linus décide d'écrire son propre logiciel de gestion de version et il sort git. Le 16 juin 2005, la version 2.6.12 du noyau est gérer avec git.
 
 Note : c'est apparement pas du tout le linux qu'on connais aujourd'hui et c'était vraiment dur à prendre en main et c'était développer vraiment pour les besoins de Linus et l'intégration du développement du noyau.
 
 - en 2007 : après pas mal de modification, git est prêt à être utilisé pour gérer d'autre logiciel que le noyau linux.
 
-[ICI] insérer graph de l'evolution 'git' versus 'svn' pour la gestion de projet
-
-![test](images/git_vs_svn.png)
 
 ### Alternatives :
 
@@ -138,16 +147,29 @@ Note : c'est apparement pas du tout le linux qu'on connais aujourd'hui et c'éta
 le plus populaire et je dirais le seul viable et maintenu à ce jour ? :
 - Mercurial 
 
-[ICI] mettre le graph de git survey pour savoir ce que les gens utilisaient à l'époque
+sinon d'après 'git survey' en 2007, voici ce que les gens utilisaient pour gérer le versionning de leur projet (pour 654 répondants (plusieurs réponses possibles)) pour donner une idée :
 
-ça virer ?(dessous)
+|Réponses|nombre|Réponses|nombres|Réponses|nombres|
+|--------|------|--------|-------|--------|-------|
+AccuRev |	3| Mercurial |	92|Subversion |	524|
+Aegis |	1|Monotone |31|Sun NSE 	|2|
+Bazaar |	19|Omniworks |	1|Sun TeamWare |	4|
+Bazaar-NG 	|50|OpenCM |	1|VCS 	|1|
+BitKeeper |	27|PRCS |	1|VMS 	|1|
+CCC |	1|PVCS 	|12|VSS 	|26|
+CMS (Digital) |	1|Perforce 	|50|'cp -a' 	|1|
+CMS (VAX) |	1|Quilt |	2|akpm patch scripts| 	1|
+CMS (VMS) |	1|RCS 	|61|custom in-house tools 	|1|
+CVCS | 	1|SCCS |	18|diff patch |	2|
+CVS |	454|SCM 	|1|notes-on-paper-made-by-hand |	1|
+ClearCase |	43|SCSS |	1|really horrible stuff |	1|
+CodeMgr |1|SVK |	19|scripts for 'shadow trees' |	1|
+Continuus 	|1|Sourcerer's Apprentice 	|1|tarballs 	|1|
+Darcs 	|78|SourceForge |	1|tlib 	|1|none 	|9|
+DesignSync |	1|Serena Version Manager |	1|undisclosed 	|1 |
+GNU Arch 	|57|StarTeam 	|4|
 
-d'autres moins populaire (je ne sais pas si c'est encore utilisé aujourd'hui, renseignez vous si ça vous chante):
-- GNU arch
-- Monotone
-- Darcs
-- Pijul
-- Apache Subversion
+
 
 #### Alternative à GitHub :
 
@@ -155,6 +177,14 @@ d'autres moins populaire (je ne sais pas si c'est encore utilisé aujourd'hui, r
 - Bitbucket
 - GitLab
 - Gitea
+
+### NOTES:
+
+- De grosses entreprise comme Facebook et Google n'utilise pas / plus git. Car trop peu efficient pour gérer les énormes historiques de projet.
+
+- Les studios de jeu AAA vont préférer un système centralisé, car trop long / pas pratique de télécharger tous le répo qui peut peser plusieurs Tera octets de données.
+
+![grpahique de l'évolution de l'adoption de git versus svn](images/git_vs_svn.png)
 
 
 ### sources :
