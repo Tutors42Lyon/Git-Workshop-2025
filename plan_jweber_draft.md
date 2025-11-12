@@ -3,9 +3,9 @@
 
 - [`Introduction`](#Introduction)
     - [`Glossaire`](#Glossaire)
-    - [`git en bref résumé`](#git-en-bref-résumé)
-    - [`Historique (d'où vient git)`](#Historique-(d'où-vient-git))
-        - [`1ere generation de VCS`](#1eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
+    - [`git en bref résumé`](#git-en-bref-r%C3%A9sum%C3%A9-)
+    - [`Historique (d'où vient git)`](#historique-do%C3%B9-vient-git-)
+        - [`1ere generation de VCS`](#1ere-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
         - [`2eme generation de VCS`](#2eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
         - [`3eme generation de VCS`](#3eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
     - [`Alternatives`](#Alternatives-)
