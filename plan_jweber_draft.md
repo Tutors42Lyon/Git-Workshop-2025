@@ -1,9 +1,17 @@
 
 # atelier git
 
+- [`Introduction`](#Introduction)
+    - [`Glossaire`](#Glossaire)
+    - [`git en bref résumé`](#git)
+    - [`Historique`](#Historique)
+        - [`1ere generation de VCS`](#1ere)
+        - [`2eme generation de VCS`](#2eme)
+        - [`3eme generation de VCS`](#3eme)
+    - [`Alternatives`](#Alternatives)
+    
 
-
-## Introduction
+## `Introduction`
 
 ### Glossaire 
 
@@ -28,7 +36,7 @@ Créer en 2005 par Linus Torvalds pour pouvoir gérer les versions du noyau linu
 #### un logiciel de control de version :
 
 - Pouvoir gérer différentes versions d'un logiciel.
-- Optimisation de la mémoire (avec un système qui enregistre les différences entre fichiers plutôt que le fichier à chaque état du projet)
+- Optimisation de la mémoire (avec un système qui enregistre les différences d'un fichiers entre deux patches plutôt que le fichier entier à chaque état du projet)
 - Savoir qui à changer quoi et quand.
 - Savoir quel version du logiciel le client a sur son pc.
 
@@ -58,16 +66,16 @@ souvent utilisé pour gérer le code source d'un programme.
 **avantages / inconvénients** :
 
 Exemple d'avantages d'un système décentralisé :
-    - possibilité de travailler hors-ligne
-    - les copies local du répertoires sont aussi des backups : il n'y a pas un seul endroit ou se situe le code source.
+- possibilité de travailler hors-ligne
+- les copies local du répertoires sont aussi des backups : il n'y a pas un seul endroit ou se situe le code source.
 
 Exemples de désavantages d'un système décentralisé :
-    - Peu prendre beaucoup de place, vu que chaque personne fait une copie entière du répertoire. (-> à vérifier, mais : un studio de jeu AAA n'utilisera jamais git car pas adapté pour gérer tous les assets, mais plus quelque chose comme Perforce)
-    - Un code plus facilement exposé, vu qu'il est présent sur plein de machine.
+- Peu prendre beaucoup de place, vu que chaque personne fait une copie entière du répertoire. (-> à vérifier, mais : un studio de jeu AAA n'utilisera jamais git car pas adapté pour gérer tous les assets, mais plus quelque chose comme Perforce)
+- Un code plus facilement exposé, vu qu'il est présent sur plein de machine.
 
 
 
-### Historique (d'où vient git) : 
+### `Historique` (d'où vient git) : 
 
 Les différentes générations de système de control de version:
 
@@ -105,23 +113,23 @@ le projet Linux commence à être vraiment gros, et jusque là, le système de c
 
 ##### Toujours en 1998:
 
-un mec (Larry McVoy) propose son idée d'outil de controle de version décentralisé à Linus. Il lui dit c'est cool j'aime l'idée.
+un mec (Larry McVoy) propose son idée d'outil de controle de version décentralisé à Linus qui lui réponds que c'est cool, qu'il aime l'idée.
 
 ##### en 2000 :
 
-Ce même mec (Larry McVoy) sort alors BitKeeper en 2000.
+Ce même mec (Larry McVoy) sort alors BitKeeper en 2000, historiquement le premier des système de controle de version **décentralisé**.
 
 ##### en 2002 :
 
 BitKeeper est adopté pour le gestion de contrôle du noyau linux. Mais c'est un logiciel propriétaire certains termes de la license sont très restrictif :
-- Interdit de reverse-engineer quoi que ce soit lié à BitKeeper
+- Interdit de reverse-engineer quoi que ce soit lié à BitKeeper.
 - Interdiction de participer au développement d'un outil concurrent à BitKeeper.
 
 L'adoption de BitKeeper fait beaucoup débat dans la communauté linux.
 
 ##### en 2005 :
 
-ça fini par exploser et Larry McVoy retire la license pour utiliser BitKeeper pour gérer le noyau linux pour différentes raisons.
+ça fini par exploser et Larry McVoy retire la license pour utiliser BitKeeper pour gérer le noyau linux pour différentes raisons (non respect de la license entre autres.
     
 Il faut rapidement une alternative a BitKeeper pour permettre la suite du développement du noyau, les alternatives existantes à l'époque sont essentiellement:
 - monotone
@@ -129,14 +137,13 @@ Il faut rapidement une alternative a BitKeeper pour permettre la suite du dével
 
 Mais les alternatives sont trop inéfficientes.
 
-##### en (avril) 2005 :
+En avril 2005 : Linus décide d'écrire son propre logiciel de gestion de version et il sort git. 
 
-Linus décide d'écrire son propre logiciel de gestion de version et il sort git. Le 16 juin 2005, la version 2.6.12 du noyau est gérer avec git.
+Le 16 juin 2005, la version 2.6.12 du noyau est gérer avec git.
 
 Note : c'est apparement pas du tout le linux qu'on connais aujourd'hui et c'était vraiment dur à prendre en main et c'était développer vraiment pour les besoins de Linus et l'intégration du développement du noyau.
 
 - en 2007 : après pas mal de modification, git est prêt à être utilisé pour gérer d'autre logiciel que le noyau linux.
-
 
 ### Alternatives :
 
@@ -169,6 +176,7 @@ Darcs 	|78|SourceForge |	1|tlib 	|1|none 	|9|
 DesignSync |	1|Serena Version Manager |	1|undisclosed 	|1 |
 GNU Arch 	|57|StarTeam 	|4|
 
+source :  https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html#10._What_other_SCMs_did.2Fdo_you_use.3F
 
 
 #### Alternative à GitHub :
@@ -184,7 +192,12 @@ GNU Arch 	|57|StarTeam 	|4|
 
 - Les studios de jeu AAA vont préférer un système centralisé, car trop long / pas pratique de télécharger tous le répo qui peut peser plusieurs Tera octets de données.
 
+ci-dessous un graphique de l'évolution de l'adoption de git versus svn pour la gestion de version d'après un songae eclispe :
+
 ![grpahique de l'évolution de l'adoption de git versus svn](images/git_vs_svn.png)
+
+
+source : https://softwareengineering.stackexchange.com/a/150791
 
 
 ### sources :
@@ -195,6 +208,6 @@ GNU Arch 	|57|StarTeam 	|4|
 - https://graphite.com/blog/bitkeeper-linux-story-of-git-creation
 - https://www.youtube.com/watch?v=W3hr-F8ie94
 - https://ericsink.com/vcbe/html/history_of_version_control.html
-- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html (graphic sur qui utilise quel VCS)
+- https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html (graphic sur qui utilise quel VCS)
 
 ### a voir submodule et autres (jweber)
