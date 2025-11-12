@@ -21,7 +21,6 @@ Git fonctionne avec une configuration pour etablir des logs precis et des strate
 
 ### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream (kporceil)
 
-
 #### C’est quoi une branche ?
 
 Une **branche** Git, c’est une **ligne de développement parallèle**.  
@@ -69,7 +68,7 @@ git branch -d nom-de-branche
 
 #####  Le but du merge
 
-Quand une branche est finis (plus rien a faire dessus) (ex : `feature/xx`), il faut **intégrer la nouvelle branche** dans la branche principale.
+Quand une branche est fini (plus rien a faire dessus) (ex : `feature/xx`), il faut **intégrer la nouvelle branche** dans la branche principale.
 Pour ça, il existe deux approches principales : **merge** et **rebase**.
 
 ---
@@ -81,11 +80,11 @@ C’est la méthode la plus sûre et la plus utilisée.
 
 ```bash
 git switch main
-git merge feature/ajout-login
+git merge feature/add-login
 ```
 
 Git crée alors un **commit de merge** qui relie les deux branches.  
-l’historique exact des commits est conservé.
+L’historique exact des commits est conservé.
 
 ###### ✅ Avantages
 - Historique fidèle : rien n’est modifié.  
@@ -143,9 +142,9 @@ printf("Hello\n");
 ```
 
 les indicateurs sont les suivants: `<<` represente la partie de la difference qui represente la branche actuelle, tandis que `>>` represente les changements de la branche en train d'etre merge. Les deux sont separé par une ligne de `=`.
-il faut alors modifier le fichier, en choisissant la partie du code qu'on veux garder (ou les deux si besoin), et supprimer les indicateurs de conflit.
+Il faut alors modifier le fichier, en choisissant la partie du code qu'on veux garder (ou les deux si besoin), et supprimer les indicateurs de conflit.
 
-il suffit maintenant de faire un commit de resolution de conflit.
+Il suffit maintenant de faire un commit de resolution de conflit.
 
 ```bash
 # Une fois le fichier corrigé
@@ -171,7 +170,7 @@ git commit   # pour terminer le merge
 il arrive que l'on veuille recuperer une version plus ancienne d'un fichier, la version que l'on cherche est dans un commit antérieur. Il suffit alors de localiser le commit, copier son hash. puis d'utiliser la commande suivante:
 
 ```bash
-git checkout [hash] [path/to/file]
+git checkout [hash] -- [path/to/file]
 ```
 
 le fichier sera alors remplacé par son ancienne version.

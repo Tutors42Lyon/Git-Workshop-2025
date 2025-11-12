@@ -17,8 +17,21 @@
     - [`git remote`](#git-remote)
     - [`git diff`](#git-diff)
     - [`git log`](#git-log)
-
-    
+- [Config son git](#config_son_git)
+- [branching](#_branching,_plusieurs_strategie_de_fusion,_resolution_de_conflits,_checkout_un_fichier,_upstream)
+    - [Qu'est-ce qu'une branche ?](#C'est_quoi_une_branche)
+    - [À quoi ça sert ?](#À_quoi_ça_sert_?)
+    - [Les commandes de base](#Les_commandes_de_base)
+    - [Fusionner des branches](#Fusionner_des_branches)
+        - [Le but du merge](#Le_but_du_merge)
+        - [git merge](#git_merge_-_la_fusion_classique)
+        - [git rebase](#git_rebase_-_la_réécriture)
+        - [Les conflits](#Les_conflits)
+    - [Annuler des changements](#Annuler_des_changements)
+        - [Recuperer une ancienne version d'un fichier](#Recuperer_une_ancienne_version_d'un_fichier)
+        - [Annuler des changements et retourner a un ancien commit](#Annuler_des_changements_et_retourner_a_un_ancien_commit)
+            - [git revert](#git_revert)
+            - [git reset](#git_reset)
 
 ## `Introduction`
 
@@ -220,7 +233,7 @@ source : https://softwareengineering.stackexchange.com/a/150791
 - https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2006.html
 
 
-### config son git 
+## config son git 
 
 Git fonctionne avec une configuration pour etablir des logs precis et des strategie par défaut.
 
@@ -290,12 +303,10 @@ La commande `git status` est une manière simple et efficace d'avoir des infos s
 C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer ses commits et les pushs/pull fait sur la remote.
 
 
-## commande/utilisation poussée (branching)
-
-### branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream 
+## branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream 
 
 
-#### C’est quoi une branche ?
+### C’est quoi une branche ?
 
 Une **branche** Git, c’est une **ligne de développement parallèle**.  
 Chaque branche représente une version différente du projet, avec son propre historique de commits.
@@ -304,7 +315,7 @@ Chaque branche représente une version différente du projet, avec son propre hi
 
 ---
 
-#### À quoi ça sert ?
+### À quoi ça sert ?
 
 - **Tester** : Pratique pour essayer une nouvelle fonctionnalité sans impacter la version principale.  
 - **Travailler à plusieurs** : chaque contributeur peut avancer sur sa branche, puis fusionner le résultat.  
@@ -316,7 +327,7 @@ Chaque branche représente une version différente du projet, avec son propre hi
 
 ---
 
-####  Les commandes de base
+###  Les commandes de base
 
 ```bash
 # Voir les branches existantes
@@ -338,16 +349,16 @@ git merge nom-de-branche
 git branch -d nom-de-branche
 ```
 
-####  Fusionner des branches
+###  Fusionner des branches
 
-#####  Le but du merge
+####  Le but du merge
 
 Quand une branche est finis (plus rien a faire dessus) (ex : `feature/xx`), il faut **intégrer la nouvelle branche** dans la branche principale.
 Pour ça, il existe deux approches principales : **merge** et **rebase**.
 
 ---
 
-###### `git merge` — la fusion classique
+#### `git merge` — la fusion classique
 
 `merge` combine l’historique de deux branches **sans le réécrire**.  
 C’est la méthode la plus sûre et la plus utilisée.
@@ -360,17 +371,17 @@ git merge feature/ajout-login
 Git crée alors un **commit de merge** qui relie les deux branches.  
 l’historique exact des commits est conservé.
 
-###### ✅ Avantages
+##### ✅ Avantages
 - Historique fidèle : rien n’est modifié.  
 - Facile à comprendre, surtout en équipe.  
 - Sécurisé : aucun commit n’est réécrit.
 
-###### ⚠️ Inconvénients
+##### ⚠️ Inconvénients
 - L’historique peut devenir “brouillon” (avec des branches et commits entrecroisés).
 
 ---
 
-##### `git rebase` — la réécriture
+#### `git rebase` — la réécriture
 
 `rebase` réapplique les commits d’une branche **au-dessus** d’une autre, comme si le travail avait commencé plus tard.
 
@@ -381,11 +392,11 @@ git rebase main
 
 Cela **réécrit l’historique** pour donner une ligne de commits plus propre et linéaire.
 
-###### ✅ Avantages
+##### ✅ Avantages
 - Historique propre et linéaire.  
 - Idéal avant de fusionner une branche de fonctionnalité.
 
-###### ⚠️ Inconvénients
+##### ⚠️ Inconvénients
 - Réécrit l’historique → dangereux sur des branches partagées !
 - Nécessite de comprendre ce qu’on fait.
 
@@ -395,7 +406,7 @@ Cela **réécrit l’historique** pour donner une ligne de commits plus propre e
 
 ---
 
-##### Les conflits
+#### Les conflits
 
 Quand deux branches modifient **les mêmes lignes d’un fichier**, Git ne peut pas deviner quelle version garder : c’est un **conflit**. et c'est tout a fait normal.
 
@@ -430,16 +441,16 @@ git commit   # pour terminer le merge
 
 ---
 
-###### En résumé
+#### En résumé
 
 | Stratégie | Résumé | Avantages | Inconvénients |
 |--------|------------------|------------|----------------|
 | **Merge** | Fusionne les branches avec un commit de merge | Simple, sûr, collaboratif | Historique plus complexe |
 | **Rebase** | Réécrit les commits sur une autre base | Historique propre et linéaire | Risque si mal utilisé |
 
-##### Annuler des changements:
+### Annuler des changements
 
-###### Recuperer une ancienne version d'un fichier
+#### Recuperer une ancienne version d'un fichier
 
 il arrive que l'on veuille recuperer une version plus ancienne d'un fichier, la version que l'on cherche est dans un commit antérieur. Il suffit alors de localiser le commit, copier son hash. puis d'utiliser la commande suivante:
 
@@ -449,11 +460,11 @@ git checkout [hash] [path/to/file]
 
 le fichier sera alors remplacé par son ancienne version.
 
-###### Annuler des changements et retourner a un ancien commit.
+#### Annuler des changements et retourner a un ancien commit.
 
 il arrive des fois ou les derniers changements ne sont finalement pas bon, et nous voulons reprendre a partir d'un commit antérieur.
 
-####### `git revert`
+##### `git revert`
 
 `git revert` **annule un commit en créant un nouveau commit inverse**.  
 L’historique reste intact — pratique pour corriger sans casser.
@@ -471,7 +482,7 @@ git revert <hash_du_commit>
 
 ---
 
-####### `git reset`
+##### `git reset`
 
 `git reset` **remonte le temps** en déplaçant le pointeur `HEAD` à un commit précédent.  
 
