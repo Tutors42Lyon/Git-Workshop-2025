@@ -374,7 +374,7 @@ git commit -a -m "fix: segfault sur builtin cd"
 ### `git push`
 
 `git push` est la commande qui vous permettra de synchroniser tous vos commit avec le repo remote. C'est la manière la plus efficace de partager votre code avec vos mates où de pouvoir travailler depuis plusieurs machines différentes.  
-Cette commande est utilisée pour mettre à jour le repo distant par rapport à votre repo local et bien que concrètement on l'utilise principalement pour envoyer des commits sur un serveur, `git push` est l'interface utilisée pour n'importe quel changement sur le repo distant. Elle permet beaucoup d'actions différentes mais voici les notions dont vous aurez pour la majorité besoin pendant votre tronc commun.
+Cette commande est utilisée pour **mettre à jour** le repo distant par rapport à votre repo local et bien que concrètement on l'utilise surtout pour envoyer des commits sur un serveur, `git push` est l'interface utilisée pour **n'importe quel** changement sur le repo distant. Elle permet beaucoup d'actions différentes mais voici les notions dont vous aurez pour la majorité besoin pendant votre tronc commun.
 
 La branche que vous utilisez sera probablement reliée à une branche sur un repo remote (branche qu'on appelle upstream).
 Vous pouvez le vérifier de cette manière :
@@ -391,7 +391,7 @@ qui devrait vous donner un résultat de ce genre :
 * main 4464406 [<remote>/<branche>] feat: ajout de la commande git commit
 ```
 
-Ce qui signifie que la branche locale `main` a comme upstream la branche `<branche>` sur le repo distant définit par `<remote>`
+Ce qui signifie que la branche locale `main` **a comme upstream** la branche `<branche>` sur le repo distant définit par `<remote>`
 
 > Les crochets peuvent ne pas être présents au quel cas votre branche n'a pas d'upstream.
 
@@ -399,7 +399,7 @@ Ce qui signifie que la branche locale `main` a comme upstream la branche `<branc
 Si votre branche est bien reliée à branche distante, un `git push` seul essaiera de pousser cette branche par défaut.  
 Sinon, vous devrez spécifier manuellement la branche et la remote à utiliser.
 
-Concrètement :
+Concrètement, pour une branche avec comme upstream origin/main :
 
 ```sh
 # Push sur la branche main de la remote origin
@@ -413,6 +413,7 @@ git push my-remote my-branch
 ```
 
 Et si votre branche n'a pas d'upstream, vous devrez obligatoirement spécifier la remote et la branche.
+Cela peut-être utile pour utiliser un repo distant différent de celui utilisé par défaut. **Par exemple push un projet sur la vogsphere après l'avoir dev sur github**
 
 > [!TIP]
 > Pour set l'upstream d'une branche qui n'en a pas encore (ce qui arrivera quand vous en créerez une nouvelle), vous pouvez utiliser `git push`.
@@ -422,6 +423,8 @@ Et si votre branche n'a pas d'upstream, vous devrez obligatoirement spécifier l
 > ```
 
 ### `git fetch`
+
+À L'inverse de `[git push](#git-push)`, `git pull` permet de synchroniser votre repo local avec les nouvelles modifications du repo distant.
 
 ### `git pull`
 
