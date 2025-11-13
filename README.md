@@ -187,25 +187,25 @@ le plus populaire et je dirais le seul viable et maintenu à ce jour ? :
 
 sinon d'après 'git survey' en 2007, voici ce que les gens utilisaient pour gérer le versionning de leur projet (pour 654 répondants (plusieurs réponses possibles)) pour donner une idée :
 
-| Réponses      | nombre | Réponses               | nombres | Réponses                    | nombres |
-| ------------- | ------ | ---------------------- | ------- | --------------------------- | ------- | ---- | --- |
-| AccuRev       | 3      | Mercurial              | 92      | Subversion                  | 524     |
-| Aegis         | 1      | Monotone               | 31      | Sun NSE                     | 2       |
-| Bazaar        | 19     | Omniworks              | 1       | Sun TeamWare                | 4       |
-| Bazaar-NG     | 50     | OpenCM                 | 1       | VCS                         | 1       |
-| BitKeeper     | 27     | PRCS                   | 1       | VMS                         | 1       |
-| CCC           | 1      | PVCS                   | 12      | VSS                         | 26      |
-| CMS (Digital) | 1      | Perforce               | 50      | 'cp -a'                     | 1       |
-| CMS (VAX)     | 1      | Quilt                  | 2       | akpm patch scripts          | 1       |
-| CMS (VMS)     | 1      | RCS                    | 61      | custom in-house tools       | 1       |
-| CVCS          | 1      | SCCS                   | 18      | diff patch                  | 2       |
-| CVS           | 454    | SCM                    | 1       | notes-on-paper-made-by-hand | 1       |
-| ClearCase     | 43     | SCSS                   | 1       | really horrible stuff       | 1       |
-| CodeMgr       | 1      | SVK                    | 19      | scripts for 'shadow trees'  | 1       |
-| Continuus     | 1      | Sourcerer's Apprentice | 1       | tarballs                    | 1       |
-| Darcs         | 78     | SourceForge            | 1       | tlib                        | 1       | none | 9   |
-| DesignSync    | 1      | Serena Version Manager | 1       | undisclosed                 | 1       |
-| GNU Arch      | 57     | StarTeam               | 4       |
+|Réponses|nombre|Réponses|nombres|Réponses|nombres|
+|--------|------|--------|-------|--------|-------|
+AccuRev |       3| Mercurial |  92|Subversion | 524|
+Aegis | 1|Monotone |31|Sun NSE  |2|
+Bazaar |        19|Omniworks |  1|Sun TeamWare |        4|
+Bazaar-NG       |50|OpenCM |    1|VCS   |1|
+BitKeeper |     27|PRCS |       1|VMS   |1|
+CCC |   1|PVCS  |12|VSS         |26|
+CMS (Digital) | 1|Perforce      |50|'cp -a'     |1|
+CMS (VAX) |     1|Quilt |       2|akpm patch scripts|   1|
+CMS (VMS) |     1|RCS   |61|custom in-house tools       |1|
+CVCS |  1|SCCS |        18|diff patch | 2|
+CVS |   454|SCM         |1|notes-on-paper-made-by-hand |        1|
+ClearCase |     43|SCSS |       1|really horrible stuff |       1|
+CodeMgr |1|SVK |        19|scripts for 'shadow trees' | 1|
+Continuus       |1|Sourcerer's Apprentice       |1|tarballs     |1|
+Darcs   |78|SourceForge |       1|tlib  |1|none         |9|
+DesignSync |    1|Serena Version Manager |      1|undisclosed   |1 |
+GNU Arch        |57|StarTeam    |4|
 
 source : https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html#10._What_other_SCMs_did.2Fdo_you_use.3F
 
