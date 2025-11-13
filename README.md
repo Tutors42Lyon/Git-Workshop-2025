@@ -277,6 +277,8 @@ Il existe beaucoup de services de gestion de dépôt distant, bien le plus connn
 
 > ###### sources : [Introduction à GIT](https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/#vue-d-ensemble)
 
+---
+
 ### `git clone`
 
 Pour utiliser un repo déjà existant et travailler dessus, vous aurez besoin de `git clone` qui permet d'initialiser votre repo local à partir d'une remote.
@@ -300,6 +302,10 @@ git clone git@github.com:Tutors42Lyon/Git-Workshop-2025.git
 
 git clone https://github.com/Tutors42Lyon/Git-Workshop-2025.git
 
+# OU
+
+git clone /home/me/Documents/dev/Libft # Une remote peut être un chemin local
+
 # Plusieurs types de remote existent, la différence est peu importante mais
 # certains détails de configuration permettent ou induisent l'utilisation de
 # d'un type ou un autre
@@ -316,6 +322,8 @@ Git nomme par défaut la remote utilisée pour clone le repo `origin`, c'est-à-
 La branche par défaut dépend de la configuration du dépôt distant et peut ne pas être définie si le dépôt est vide. (voir les détails sur les [branches](#cest-quoi-une-branche-))  
 L'impact sur l'utilisation finale du repo est plutôt négligeable et dans la grande majorité des cas vos premières modifications créeront automatiquement une branche définie par votre [config](#config-son-git).
 
+---
+
 ### `git add`
 
 `git add` permet d'ajouter les fichiers et dossiers spécifiés à l'index.  
@@ -329,12 +337,14 @@ git add . # Ajoute le dossier actuel et tous ses fichiers/sous-dossiers récursi
 git add file1 file2 dir1/file3 # Ajoute les fichiers sélectionner
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > #### `.gitignore`
 >
 > Le `.gitignore` permet de spécifier des fichiers/dossiers à ne pas ajouter automatiquement à l'index avec [`git add`](#git-add).  
 > Il peut y en avoir plusieurs dans différents dossiers d'un repo et ils agiront tous sur leur dossier et tous ses sous-dossiers.
+
+---
 
 ### `git status`
 
@@ -346,6 +356,8 @@ La commande `git status` est une manière simple et efficace d'avoir des infos s
 - Les modifications apportées au fichiers du working tree par rapport à l'index.
 
 C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer ses commits et les pushs/pull fait sur la remote.
+
+---
 
 ### `git commit`
 
@@ -371,10 +383,14 @@ Exemple :
 git commit -a -m "fix: segfault sur builtin cd"
 ```
 
+---
+
 ### `git push`
 
 `git push` est la commande qui vous permettra de synchroniser tous vos commit avec le repo remote. C'est la manière la plus efficace de partager votre code avec vos mates où de pouvoir travailler depuis plusieurs machines différentes.  
 Cette commande est utilisée pour **mettre à jour** le repo distant par rapport à votre repo local et bien que concrètement on l'utilise surtout pour envoyer des commits sur un serveur, `git push` est l'interface utilisée pour **n'importe quel** changement sur le repo distant. Elle permet beaucoup d'actions différentes mais voici les notions dont vous aurez pour la majorité besoin pendant votre tronc commun.
+
+#### L'upstream
 
 La branche que vous utilisez sera probablement reliée à une branche sur un repo remote (branche qu'on appelle upstream).
 Vous pouvez le vérifier de cette manière :
@@ -391,7 +407,7 @@ qui devrait vous donner un résultat de ce genre :
 * main 4464406 [<remote>/<branche>] feat: ajout de la commande git commit
 ```
 
-Ce qui signifie que la branche locale `main` **a comme upstream** la branche `<branche>` sur le repo distant définit par `<remote>`
+Le texte entre crochets signifie que la branche locale `main` **a comme upstream** la branche `<branche>` sur le repo distant définit par `<remote>`
 
 > Les crochets peuvent ne pas être présents au quel cas votre branche n'a pas d'upstream.
 
@@ -422,17 +438,118 @@ Cela peut-être utile pour utiliser un repo distant différent de celui utilisé
 > git push -u origin nouvelle-branch
 > ```
 
+---
+
 ### `git fetch`
 
-À L'inverse de `[git push](#git-push)`, `git pull` permet de synchroniser votre repo local avec les nouvelles modifications du repo distant.
+À L'inverse de `[git push](#git-push)`, `git pull` permet de synchroniser votre repo local avec les nouvelles modifications du repo distant.  
+`git fetch` s'occupe de charger tous les nouveaux commits présent sur le repo distant. Cependant, il ne les applique pas, les modifications sont enregistrée sur une branche distante qui sert de copie à la branche présente sur la remote, ces branches dîtes "distantes" sont uniquement destinées à être des copies de l'état actuelle des branches sur la remote. Elles sont toujours nommées `<remote>/<branche>` et vous ne pouvez pas vous mettre sur ces branches pour les modifier.
+
+Cependant, pour ensuite appliquer leur état sur les branches locales, vous pouvez juste utiliser `git merge` pour fusionner les branches distantes avec celles présentes sur votre repo local.
+
+Exemple :
+
+```sh
+# Chargement des nouvelles modifications depuis le repo distant
+git fetch
+
+# Fusion entre les modifications du repo distant et la branche du repo local
+git merge origin/main
+```
+
+> Voir [merge](#git-merge--la-fusion-classique)
+
+[`git pull`](#git-pull) peut paraitre plus pratique mais fetch permet de voir l'état actuelle du repo distant sans avoir besoin de gérer des potentiels conflits de merge entre les modifications distantes et locales. Même si c'est très situationnel, la différence est importante à connaitre.
+
+Vous pouvez spécifier une remote et une branche à fetch de la même manière qu'à push (voir concept d'[upstream](#lupstream)).
+
+Exemple pour une branche avec comme upstream origin/main :
+
+```sh
+# Fetch toutes les modifications de la remote origin
+git fetch
+
+# Fetch toutes les modifications de la remote my-remote
+git fetch my-remote
+
+# Fetch les modifications de la branche my-branche de la remote my-remote
+git fetch my-remote my-branch
+```
+
+---
 
 ### `git pull`
 
+`git pull` est une combinaison de [`git fetch`](#git-fetch) et `git merge`. En plus d'aller chercher les nouvelles modifications depuis le repo distant, `git pull` les applique au working tree. Ce qui le rend plus pratique à utiliser dans la majorité des cas.
+
+---
+
 ### `git remote`
+
+Cette commande permet de gérer et visualiser les remotes.  
+Le concept de remote est important car il vous permet d'utiliser plusieurs repo distant depuis un seul repo local
+
+> Par exemple pour push un projet créé sur github sur la vogsphere en gardant l'historique de commits.
+
+Une remote est uniquement stockée en locale, c'est simplement un nom donné à un URL pointant vers un repo git externe
+
+> [!NOTE]
+>
+> Il existe différentes URL possible, avec certaines caractéristiques qui varient au niveau de l'authentification.
+>
+> - URL SSH - `git@hostname:path/to/repo`  
+>    Vous l'avez déjà utilisé avec la vogsphere et ils permettent de communiquer au serveur via ssh. Il utilise un système de clé publique/privée pour l’authentification et le chiffrement, ce qui permet de push sans devoir gérer manuellement de jeton d’accès ou de connexion en ligne de commande, une fois les clés configurées.
+> - URL HTTP - `https://hostname/path/to/repo`  
+>    Il a l'avantage de ne pas nécessiter d'authentification pour les repo publiques (évite de devoir setup des clés juste pour clone) mais lorsqu’une authentification est nécessaire, il faut fournir des identifiants (souvent un jeton d’accès personnel), ce qui est moins transparent à l’usage que SSH.
+> - URL local - `path/to/repo`  
+>    Bien que dans 99.99% des cas ce soit une URL qui pointe vers un serveur différent, l'URL d'une remote peut-être un chemin vers un autre repo dans votre machine. Et dans ce cas là pas besoin d'aucune authentification.
+
+Utilisation :
+
+```sh
+# Voir les remotes détaillées
+git remote -v
+
+# Ajouter une remote
+git remote add <nom_de_remote> <url>
+
+
+```
+
+Quand vous créez un repo en le clonant, il sera créé avec une remote nommée origin par défaut qui sera l'URL qui a été utilisée pour cloner le repo
+
+Exemple :
+
+```sh
+git clone git@github.com:Tutors42Lyon/Git-Workshop-2025.git
+git remote -v
+```
+
+Donnerait un output de ce style :
+
+```
+origin  git@github.com:Tutors42Lyon/Git-Workshop-2025.git (fetch)
+origin  git@github.com:Tutors42Lyon/Git-Workshop-2025.git (push)
+```
+
+> [!NOTE]
+>
+> #### Pourquoi 2 fois la même remote ?
+>
+> Le `(fetch)` et `(push)` désignent quelle URL va être utilisée lors d'un [`git fetch`](#git-fetch) ou un [`git push`](#git-push).  
+> Dans la plupart des cas elles sont identiques, mais elles peuvent différer pour mettre en place certains workflows — par exemple lire depuis un dépôt public et pousser vers un dépôt interne pour vérification avant intégration.
+
+---
 
 ### `git diff`
 
+
+
+---
+
 ### `git log`
+
+---
 
 ## branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream
 
