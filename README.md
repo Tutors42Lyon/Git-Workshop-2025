@@ -491,6 +491,7 @@ git fetch my-remote my-branch
 Cette commande permet de gérer et visualiser les remotes.  
 Le concept de remote est important car il vous permet d'utiliser plusieurs repo distant depuis un seul repo local
 
+> [!TIP]
 > Par exemple pour push un projet créé sur github sur la vogsphere en gardant l'historique de commits.
 
 Une remote est uniquement stockée en locale, c'est simplement un nom donné à un URL pointant vers un repo git externe
