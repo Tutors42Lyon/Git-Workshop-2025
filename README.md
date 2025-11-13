@@ -582,6 +582,26 @@ Les patchs sont pratiques pour partager des modifications sans avoir à pousser 
 
 ### `git log`
 
+`git log` est la commande qui vous permet de **parcourir l’historique des commits** d’un repo.  
+Elle est particulièrement utile pour obtenir les **hash des commits**, qui servent ensuite pour d’autres commandes comme `git checkout <hash>`, `git diff <hash>`, ou `git revert <hash>`.
+
+`git log` seul affiche tous les commits de la branche actuelle, avec :
+
+- Le **hash complet** (SHA-1)  
+- L’**auteur**  
+- La **date**  
+- Le **message du commit**
+
+Cependant git log permet d'obtenir un formatage assez poussé et permet une bonne visualisation de l'historique du repo grâce à ses nombreuses options.
+
+```sh
+# Affichage condensé avec une ligne par commit
+git log --oneline
+
+# Affichage graphique des branches et merges
+git log --graph --oneline --all
+```
+
 ---
 
 ## branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream
