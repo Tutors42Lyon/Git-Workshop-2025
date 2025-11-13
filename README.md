@@ -9,10 +9,12 @@
     - [`3eme generation de VCS`](#3eme-g%C3%A9n%C3%A9ration-de-syst%C3%A8me-de-control-de-version)
   - [`Alternatives`](#Alternatives-)
 - [Vue d'ensembe d'un repo](#vue-densembe-dun-repo)
+  - [`git clone`](#git-clone)
   - [`git add`](#git-add)
   - [`git status`](#git-status)
   - [`git commit`](#git-commit)
   - [`git push`](#git-push)
+  - [`git fetch`](#git-fetch)
   - [`git pull`](#git-pull)
   - [`git remote`](#git-remote)
   - [`git diff`](#git-diff)
@@ -103,7 +105,7 @@ Exemples de désavantages d'un système décentralisé :
 
 Les différentes générations de système de control de version:
 
-| Generation | Networking   | Operations           | Concurrency           | Examples                          |
+| Generation | Networking   | Operations           | Concurrency           | Exemples                          |
 | ---------- | ------------ | -------------------- | --------------------- | --------------------------------- |
 | 1ère       | Aucun        | Un fichier à la fois | Locks                 | SCCS, RCS                         |
 | 2ème       | Centralisé   | Plusieurs fichiers   | Merge avant de commit | CVS, SourceSafe, Subversion       |
@@ -275,12 +277,51 @@ Il existe beaucoup de services de gestion de dépôt distant, bien le plus connn
 
 > ###### sources : [Introduction à GIT](https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/#vue-d-ensemble)
 
+### `git clone`
+
+Pour utiliser un repo déjà existant et travailler dessus, vous aurez besoin de `git clone` qui permet d'initialiser votre repo local à partir d'une remote.
+
+Utilisation :
+
+```sh
+# clone le repo dans dossier (qui doit être inexistant ou vide) `dir`
+
+git clone <remote> [dir]
+
+# si `dir` n'est pas spécifié, git lui attribura un nom en fonction de la remote
+```
+
+Exemple :
+
+```sh
+git clone git@github.com:Tutors42Lyon/Git-Workshop-2025.git
+
+# OU
+
+git clone https://github.com/Tutors42Lyon/Git-Workshop-2025.git
+
+# Plusieurs types de remote existent, la différence est peu importante mais
+# certains détails de configuration permettent ou induisent l'utilisation de
+# d'un type ou un autre
+```
+
+Il y a certaines détails à savoir lorsqu'on clone un repo.
+
+#### La remote origin
+
+Git nomme par défaut la remote utilisée pour clone le repo `origin`, c'est-à-dire (voir les [remotes](#git-remote))
+
+#### La branche principale
+
+La branche par défaut dépend de la configuration du dépôt distant et peut ne pas être définie si le dépôt est vide. (voir les détails sur les [branches](#cest-quoi-une-branche-))  
+L'impact sur l'utilisation finale du repo est plutôt négligeable et dans la grande majorité des cas vos premières modifications créeront automatiquement une branche définie par votre [config](#config-son-git).
+
 ### `git add`
 
 `git add` permet d'ajouter les fichiers et dossiers spécifiés à l'index.  
 Cette commande agit récursivement ce qui permet d'ajouter tous les fichiers et dossier présent dans un dossier sécifié.
 
-Example :
+Exemple :
 
 ```sh
 git add . # Ajoute le dossier actuel et tous ses fichiers/sous-dossiers récursivement
@@ -308,11 +349,12 @@ C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer se
 
 ### `git commit`
 
-`git commit` est l'étape logique après [`git add`](#git-add). Si [`git add`](#git-add) ajoute les modifications du working tree à l'index, `git commit` permet de les appliquer au repo *définitivement*.  
-`git commit` prend un argument *obligatoire* qui est le message définit avec `-m <message>`. Si vous n'en donnez pas un éditeur s'ouvrira pour vous en demander un.  
-La rédaction de message de commt pouvant être dure vous pouvez adopter une syntaxe de messages de commit plus structurée et pratique grâce aux [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), qui proposent une convention simple et standardisée. Cela vous fournira une base pour détailler ensuite ce que vous avez changé sur votre projet.
+`git commit` est l'étape logique suivant [`git add`](#git-add).  
+Là [`git add`](#git-add) ajoute les modifications du working tree à l'index, `git commit` permet de les appliquer au repo _définitivement_.  
+Cette commande prend un argument _obligatoire_ qui est le message définit avec `-m <message>`. Si vous n'en donnez pas un éditeur s'ouvrira pour vous en demander un.  
+La rédaction de message de commit pouvant être hardue vous pouvez adopter une syntaxe de messages de commit plus structurée et pratique en suivant les règle des [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), qui proposent une convention simple et standardisée. Cela vous fournira une base pour ensuite détailler votre commit.
 
-Example :
+Exemple :
 
 ```sh
 # Ajout de toutes les modifications à l'index
@@ -321,17 +363,79 @@ git add .
 git commit -m "feat: gestion de la fermeture des pipes et des forks avec sécurisation de wait/waitpid et récupération du bon status code"
 ```
 
-L'options `-a` peut être utilisée pour ne pas avoir besoin de [`git add`](#git-add) avant de commit. Cependant, les 
+L'options `-a` peut être utilisée pour ne pas avoir besoin de [`git add`](#git-add) avant de commit. Mais attention, les fichiers non-traqués (tous les fichiers qui n'ont encore jamais été ajouté à git avec [`git add`](#git-add)) ne seront pas pris en compte. Seul les suppressions et éditions de fichiers déjà ajoutées à l'index seront incluses dans le commit.
+
+Exemple :
 
 ```sh
-git commit -a -m "fix: range"
+git commit -a -m "fix: segfault sur builtin cd"
 ```
+
+### `git push`
+
+`git push` est la commande qui vous permettra de synchroniser tous vos commit avec le repo remote. C'est la manière la plus efficace de partager votre code avec vos mates où de pouvoir travailler depuis plusieurs machines différentes.  
+Cette commande est utilisée pour mettre à jour le repo distant par rapport à votre repo local et bien que concrètement on l'utilise principalement pour envoyer des commits sur un serveur, `git push` est l'interface utilisée pour n'importe quel changement sur le repo distant. Elle permet beaucoup d'actions différentes mais voici les notions dont vous aurez pour la majorité besoin pendant votre tronc commun.
+
+La branche que vous utilisez sera probablement reliée à une branche sur un repo remote (branche qu'on appelle upstream).
+Vous pouvez le vérifier de cette manière :
+
+```sh
+# Liste les branches avec leurs détails
+
+git branch -vv
+```
+
+qui devrait vous donner un résultat de ce genre :
+
+```
+* main 4464406 [<remote>/<branche>] feat: ajout de la commande git commit
+```
+
+Ce qui signifie que la branche locale `main` est a comme upstream la branche `<branche>` sur le repo distant définie par `<remote>`
+
+> Les crochets peuvent ne pas être présents au quel cas votre branche n'a pas d'upstream.
+
+`git push` essaiera de synchroniser la branche distante aux modifications apportées à votre branche locale.  
+Si votre branche est bien reliée à branche distante, un `git push` seul essaiera de pousser cette branche par défaut.  
+Sinon, vous devrez spécifier manuellement la branche et la remote à utiliser.
+
+Concrètement :
+
+```sh
+# Push sur la branche main de la remote origin
+git push
+
+# Push sur la branche main de la remote my-remote
+git push my-remote
+
+# Push sur la branche my-branche de la remote my-remote
+git push my-remote my-branch
+```
+
+Et si votre branche n'a pas d'upstream, vous devrez obligatoirement spécifier la remote et la branche.
+
+> [!TIP]
+> Pour set l'upstream d'une branche qui n'en a pas encore (ce qui arrivera quand vous créerez une nouvelle branche), vous pouvez utiliser `git push`.
+>
+> ```sh
+> git push -u origin nouvelle-branch
+> ```
+
+### `git fetch`
+
+### `git pull`
+
+### `git remote`
+
+### `git diff`
+
+### `git log`
 
 ## branching, plusieurs strategie de fusion, resolution de conflits, checkout un fichier, upstream
 
 ### C’est quoi une branche ?
 
-Une **branche** Git, c’est une **ligne de développement parallèle**.  
+Une **branche** Git, c’est une **ligne de développement parallèle**.
 Chaque branche représente une version différente du projet, avec son propre historique de commits.
 
 > 💬 En gros : une branche = une série de modifications indépendantes.
