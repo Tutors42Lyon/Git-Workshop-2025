@@ -203,9 +203,9 @@ CVS |   454|SCM         |1|notes-on-paper-made-by-hand |        1|
 ClearCase |     43|SCSS |       1|really horrible stuff |       1|
 CodeMgr |1|SVK |        19|scripts for 'shadow trees' | 1|
 Continuus       |1|Sourcerer's Apprentice       |1|tarballs     |1|
-Darcs   |78|SourceForge |       1|tlib  |1|none         |9|
-DesignSync |    1|Serena Version Manager |      1|undisclosed   |1 |
-GNU Arch        |57|StarTeam    |4|
+Darcs   |78|SourceForge |  1 | tlib  |1 |
+DesignSync |    1|Serena Version Manager |      1| none         |9|
+GNU Arch        |57|StarTeam    |4|undisclosed   |1 |
 
 source : https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html#10._What_other_SCMs_did.2Fdo_you_use.3F
 
