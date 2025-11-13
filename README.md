@@ -187,25 +187,25 @@ le plus populaire et je dirais le seul viable et maintenu à ce jour ? :
 
 sinon d'après 'git survey' en 2007, voici ce que les gens utilisaient pour gérer le versionning de leur projet (pour 654 répondants (plusieurs réponses possibles)) pour donner une idée :
 
-|Réponses|nombre|Réponses|nombres|Réponses|nombres|
-|--------|------|--------|-------|--------|-------|
-AccuRev |       3| Mercurial |  92|Subversion | 524|
-Aegis | 1|Monotone |31|Sun NSE  |2|
-Bazaar |        19|Omniworks |  1|Sun TeamWare |        4|
-Bazaar-NG       |50|OpenCM |    1|VCS   |1|
-BitKeeper |     27|PRCS |       1|VMS   |1|
-CCC |   1|PVCS  |12|VSS         |26|
-CMS (Digital) | 1|Perforce      |50|'cp -a'     |1|
-CMS (VAX) |     1|Quilt |       2|akpm patch scripts|   1|
-CMS (VMS) |     1|RCS   |61|custom in-house tools       |1|
-CVCS |  1|SCCS |        18|diff patch | 2|
-CVS |   454|SCM         |1|notes-on-paper-made-by-hand |        1|
-ClearCase |     43|SCSS |       1|really horrible stuff |       1|
-CodeMgr |1|SVK |        19|scripts for 'shadow trees' | 1|
-Continuus       |1|Sourcerer's Apprentice       |1|tarballs     |1|
-Darcs   |78|SourceForge |  1 | tlib  |1 |
-DesignSync |    1|Serena Version Manager |      1| none         |9|
-GNU Arch        |57|StarTeam    |4|undisclosed   |1 |
+| Réponses      | nombre | Réponses               | nombres | Réponses                    | nombres |
+| ------------- | ------ | ---------------------- | ------- | --------------------------- | ------- |
+| AccuRev       | 3      | Mercurial              | 92      | Subversion                  | 524     |
+| Aegis         | 1      | Monotone               | 31      | Sun NSE                     | 2       |
+| Bazaar        | 19     | Omniworks              | 1       | Sun TeamWare                | 4       |
+| Bazaar-NG     | 50     | OpenCM                 | 1       | VCS                         | 1       |
+| BitKeeper     | 27     | PRCS                   | 1       | VMS                         | 1       |
+| CCC           | 1      | PVCS                   | 12      | VSS                         | 26      |
+| CMS (Digital) | 1      | Perforce               | 50      | 'cp -a'                     | 1       |
+| CMS (VAX)     | 1      | Quilt                  | 2       | akpm patch scripts          | 1       |
+| CMS (VMS)     | 1      | RCS                    | 61      | custom in-house tools       | 1       |
+| CVCS          | 1      | SCCS                   | 18      | diff patch                  | 2       |
+| CVS           | 454    | SCM                    | 1       | notes-on-paper-made-by-hand | 1       |
+| ClearCase     | 43     | SCSS                   | 1       | really horrible stuff       | 1       |
+| CodeMgr       | 1      | SVK                    | 19      | scripts for 'shadow trees'  | 1       |
+| Continuus     | 1      | Sourcerer's Apprentice | 1       | tarballs                    | 1       |
+| Darcs         | 78     | SourceForge            | 1       | tlib                        | 1       |
+| DesignSync    | 1      | Serena Version Manager | 1       | none                        | 9       |
+| GNU Arch      | 57     | StarTeam               | 4       | undisclosed                 | 1       |
 
 source : https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSurvey2007.html#10._What_other_SCMs_did.2Fdo_you_use.3F
 
@@ -310,6 +310,8 @@ git clone /home/me/Documents/dev/Libft # Une remote peut être un chemin local
 # certains détails de configuration permettent ou induisent l'utilisation de
 # d'un type ou un autre
 ```
+
+> Voir [types d'URL](#types-durl-de-remotes)
 
 Il y a certaines détails à savoir lorsqu'on clone un repo.
 
@@ -489,20 +491,21 @@ git fetch my-remote my-branch
 Cette commande permet de gérer et visualiser les remotes.  
 Le concept de remote est important car il vous permet d'utiliser plusieurs repo distant depuis un seul repo local
 
+> [!TIP]
 > Par exemple pour push un projet créé sur github sur la vogsphere en gardant l'historique de commits.
 
 Une remote est uniquement stockée en locale, c'est simplement un nom donné à un URL pointant vers un repo git externe
 
-> [!NOTE]
->
-> Il existe différentes URL possible, avec certaines caractéristiques qui varient au niveau de l'authentification.
->
-> - URL SSH - `git@hostname:path/to/repo`  
->    Vous l'avez déjà utilisé avec la vogsphere et ils permettent de communiquer au serveur via ssh. Il utilise un système de clé publique/privée pour l’authentification et le chiffrement, ce qui permet de push sans devoir gérer manuellement de jeton d’accès ou de connexion en ligne de commande, une fois les clés configurées.
-> - URL HTTP - `https://hostname/path/to/repo`  
->    Il a l'avantage de ne pas nécessiter d'authentification pour les repo publiques (évite de devoir setup des clés juste pour clone) mais lorsqu’une authentification est nécessaire, il faut fournir des identifiants (souvent un jeton d’accès personnel), ce qui est moins transparent à l’usage que SSH.
-> - URL local - `path/to/repo`  
->    Bien que dans 99.99% des cas ce soit une URL qui pointe vers un serveur différent, l'URL d'une remote peut-être un chemin vers un autre repo dans votre machine. Et dans ce cas là pas besoin d'aucune authentification.
+#### Types d'URL de remotes
+
+Il existe différentes URL possible, avec certaines caractéristiques qui varient au niveau de l'authentification.
+
+- URL SSH - `git@hostname:path/to/repo`  
+   Vous l'avez déjà utilisé avec la vogsphere et ils permettent de communiquer au serveur via ssh. Il utilise un système de clé publique/privée pour l’authentification et le chiffrement, ce qui permet de push sans devoir gérer manuellement de jeton d’accès ou de connexion en ligne de commande, une fois les clés configurées.
+- URL HTTP - `https://hostname/path/to/repo`  
+   Il a l'avantage de ne pas nécessiter d'authentification pour les repo publiques (évite de devoir setup des clés juste pour clone) mais lorsqu’une authentification est nécessaire, il faut fournir des identifiants (souvent un jeton d’accès personnel), ce qui est moins transparent à l’usage que SSH.
+- URL local - `path/to/repo`  
+   Bien que dans 99.99% des cas ce soit une URL qui pointe vers un serveur différent, l'URL d'une remote peut-être un chemin vers un autre repo dans votre machine. Et dans ce cas là pas besoin d'aucune authentification.
 
 Utilisation :
 
@@ -543,11 +546,62 @@ origin  git@github.com:Tutors42Lyon/Git-Workshop-2025.git (push)
 
 ### `git diff`
 
+Le diff est l'outil qui vous permettra d'identifer précisement des modifications entre plusieurs états du projets. `git diff` seul affichera les modifications apportées sur le working tree par rapport à l'index.  
+Cependant `git diff` peut prendre 2 arguments majeurs, sans rentrer dans les détails de toutes les options que vous pouveze trouver [ici](https://git-scm.com/docs/git-diff). `git diff` peut prendre en paramètre tout ce qui référence un commit, que ce soit un hash de commit, un tag, une branche, etc.
 
+Utilisation :
+
+```sh
+# Comparaison du working tree avec l'index
+git diff
+
+# Comparaison du working tree avec le code au moment du commit référencé par ref
+git diff <ref>
+
+# Comparaison du code entre les états des commits référencés par ref1 et ref2
+git diff <ref1> <ref2>
+```
+
+#### création de fichiers de patch
+
+`git diff` ne sert pas uniquement à visualiser les différences entre les fichiers.  
+Le résultat d’un `git diff` peut aussi être **enregistré dans un fichier**, appelé **patch**, qui contient toutes les modifications détectées.
+
+Exemple :
+
+```sh
+# Crée un fichier patch à partir des modifications non commit
+git diff > mon_patch.diff
+
+# Applique le patch sur le repo
+git apply mon_patch.diff
+```
+
+Les patchs sont pratiques pour partager des modifications sans avoir à pousser de commits sur un dépôt distant, ou pour transférer des changements entre différents clones du même projet.
 
 ---
 
 ### `git log`
+
+`git log` est la commande qui vous permet de **parcourir l’historique des commits** d’un repo.  
+Elle est particulièrement utile pour obtenir les **hash des commits**, qui servent ensuite pour d’autres commandes comme `git checkout <hash>`, `git diff <hash>`, ou `git revert <hash>`.
+
+`git log` seul affiche tous les commits de la branche actuelle, avec :
+
+- Le **hash complet** (SHA-1)  
+- L’**auteur**  
+- La **date**  
+- Le **message du commit**
+
+Cependant git log permet d'obtenir un formatage assez poussé et permet une bonne visualisation de l'historique du repo grâce à ses nombreuses options.
+
+```sh
+# Affichage condensé avec une ligne par commit
+git log --oneline
+
+# Affichage graphique des branches et merges
+git log --graph --oneline --all
+```
 
 ---
 
@@ -594,7 +648,7 @@ git merge nom-de-branche
 
 # Supprimer une branche devenue inutile
 git branch -d nom-de-branche
-```
+````
 
 ### Fusionner des branches
 
