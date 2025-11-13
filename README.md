@@ -391,7 +391,7 @@ qui devrait vous donner un résultat de ce genre :
 * main 4464406 [<remote>/<branche>] feat: ajout de la commande git commit
 ```
 
-Ce qui signifie que la branche locale `main` est a comme upstream la branche `<branche>` sur le repo distant définie par `<remote>`
+Ce qui signifie que la branche locale `main` a comme upstream la branche `<branche>` sur le repo distant définit par `<remote>`
 
 > Les crochets peuvent ne pas être présents au quel cas votre branche n'a pas d'upstream.
 
@@ -415,7 +415,7 @@ git push my-remote my-branch
 Et si votre branche n'a pas d'upstream, vous devrez obligatoirement spécifier la remote et la branche.
 
 > [!TIP]
-> Pour set l'upstream d'une branche qui n'en a pas encore (ce qui arrivera quand vous créerez une nouvelle branche), vous pouvez utiliser `git push`.
+> Pour set l'upstream d'une branche qui n'en a pas encore (ce qui arrivera quand vous en créerez une nouvelle), vous pouvez utiliser `git push`.
 >
 > ```sh
 > git push -u origin nouvelle-branch
