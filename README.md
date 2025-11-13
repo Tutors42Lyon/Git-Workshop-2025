@@ -350,7 +350,7 @@ C'est une bonne manière pour avoir une vue d'ensemble du repo pour préparer se
 ### `git commit`
 
 `git commit` est l'étape logique suivant [`git add`](#git-add).  
-Là [`git add`](#git-add) ajoute les modifications du working tree à l'index, `git commit` permet de les appliquer au repo _définitivement_.  
+Là où [`git add`](#git-add) ajoute les modifications du working tree à l'index, `git commit` permet de les appliquer au repo _définitivement_.  
 Cette commande prend un argument _obligatoire_ qui est le message définit avec `-m <message>`. Si vous n'en donnez pas un éditeur s'ouvrira pour vous en demander un.  
 La rédaction de message de commit pouvant être hardue vous pouvez adopter une syntaxe de messages de commit plus structurée et pratique en suivant les règle des [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), qui proposent une convention simple et standardisée. Cela vous fournira une base pour ensuite détailler votre commit.
 
