@@ -211,6 +211,8 @@ source : https://archive.kernel.org/oldwiki/git.wiki.kernel.org/index.php/GitSur
 
 #### Alternative à GitHub :
 
+- SourceHut
+- NotABug
 - SourceForge
 - Bitbucket
 - GitLab
